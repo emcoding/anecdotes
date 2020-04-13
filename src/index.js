@@ -5,9 +5,14 @@ import './index.css';
 const App = (props) => {
   const [selected, setSelected] = useState(0)
 
+  const handleClick = () => {
+    setSelected(Math.floor(Math.random() * anecdotes.length))
+  }
+
   return (
     <div>
-      {props.anecdotes[selected]}
+      <p>{props.anecdotes[selected]}</p>
+      <button onClick={handleClick}> Click for a new anecdote</button>
     </div>
   )
 }
