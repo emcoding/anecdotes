@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// I considered extracting components, but the Rule of Three 
+// made me decide that it is not worth the added complexity of indirection.
+// Is that the right choice? 
+
+
 const App = ({anecdotes}) => {
 
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
   
   const handleNewStory = () => {
+    // choose random number for index
     const newStoryIndex = Math.floor(Math.random() * anecdotes.length) 
 
     // prevent same story popping up
@@ -29,7 +35,6 @@ const App = ({anecdotes}) => {
     <div>
       <h2>Anecdote of the day</h2>
       <p className='anecdote'>{anecdotes[selected]}</p>
-      
       
       <button onClick={handleNewStory}> New anecdote</button>
       <button onClick={handleVote}> Vote up</button>
