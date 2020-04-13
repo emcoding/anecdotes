@@ -3,16 +3,25 @@ import ReactDOM from 'react-dom'
 import './index.css';
 
 const App = (props) => {
-  const [selected, setSelected] = useState(0)
 
-  const handleClick = () => {
-    setSelected(Math.round(Math.random() * anecdotes.length+1))
+  const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
+  
+  const handleNewStory = () => {
+    setSelected(Math.floor(Math.random() * anecdotes.length))
+  }
+
+  const handleVote = () => {
+    const newVotes = [...votes]
+    newVotes[selected] += 1
+    setVotes(newVotes)
   }
 
   return (
     <div>
       <p className='anecdote'>{props.anecdotes[selected]}</p>
-      <button onClick={handleClick}> Click for a new anecdote</button>
+      <button onClick={handleNewStory}> New anecdote</button>
+      <button onClick={handleVote}> Vote up</button>
     </div>
   )
 }
