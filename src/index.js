@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import './index.css';
 
 const App = ({anecdotes}) => {
@@ -8,7 +8,15 @@ const App = ({anecdotes}) => {
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
   
   const handleNewStory = () => {
-    setSelected(Math.floor(Math.random() * anecdotes.length))
+    const newStoryIndex = Math.floor(Math.random() * anecdotes.length) 
+
+    // prevent same story popping up twi
+    if (newStoryIndex === selected) {
+      handleNewStory()
+    }
+    else {
+      setSelected(newStoryIndex)
+    }
   }
 
   const handleVote = () => {
@@ -21,6 +29,7 @@ const App = ({anecdotes}) => {
     <div>
       <h2>Anecdote of the day</h2>
       <p className='anecdote'>{anecdotes[selected]}</p>
+      
       
       <button onClick={handleNewStory}> New anecdote</button>
       <button onClick={handleVote}> Vote up</button>
