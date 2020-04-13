@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css';
 
-const App = (props) => {
+const App = ({anecdotes}) => {
 
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
@@ -20,13 +20,13 @@ const App = (props) => {
   return (
     <div>
       <h2>Anecdote of the day</h2>
-      <p className='anecdote'>{props.anecdotes[selected]}</p>
+      <p className='anecdote'>{anecdotes[selected]}</p>
       
       <button onClick={handleNewStory}> New anecdote</button>
       <button onClick={handleVote}> Vote up</button>
      
       <h2>Most popular anecdote</h2>
-      <p className='anecdote'>{props.anecdotes[votes.indexOf(Math.max(...votes))]}</p>
+      <p className='anecdote'>{anecdotes[votes.indexOf(Math.max(...votes))]}</p>
     </div>
   )
 }
