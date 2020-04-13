@@ -6,12 +6,12 @@ const App = (props) => {
   const [selected, setSelected] = useState(0)
 
   const handleClick = () => {
-    setSelected(Math.floor(Math.random() * anecdotes.length))
+    setSelected(Math.round(Math.random() * anecdotes.length+1))
   }
 
   return (
     <div>
-      <p>{props.anecdotes[selected]}</p>
+      <p className='anecdote'>{props.anecdotes[selected]}</p>
       <button onClick={handleClick}> Click for a new anecdote</button>
     </div>
   )
