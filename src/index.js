@@ -10,12 +10,12 @@ const App = ({anecdotes}) => {
   const handleNewStory = () => {
     const newStoryIndex = Math.floor(Math.random() * anecdotes.length) 
 
-    // prevent same story popping up twi
-    if (newStoryIndex === selected) {
-      handleNewStory()
+    // prevent same story popping up
+    if (newStoryIndex !== selected) {
+      setSelected(newStoryIndex)
     }
     else {
-      setSelected(newStoryIndex)
+      handleNewStory()
     }
   }
 
