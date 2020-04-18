@@ -46,6 +46,7 @@ const App = ({anecdotes}) => {
 }
 
 const anecdotes = [
+  'Duplication is far cheaper than the wrong abstraction',
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
   'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
